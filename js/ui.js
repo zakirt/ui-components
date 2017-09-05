@@ -1,6 +1,12 @@
+/**
+ * Provides a factory method for creating UI components.
+ * @namespace 
+ */
 const uiComponents = (() => {
-    // Subscriber will help us implement mediator pattern 
-    // to notify all UI components.
+    /**
+     * Subscriber to notify all UI components.
+     * We'll use mediator pattern to keep all components updated.
+     */
     const uiSubscriber = {
         components: {},
         broadcast: function (componentId, data) {
@@ -163,7 +169,3 @@ const uiComponents = (() => {
         createUIComponent: createUIComponent
     };
 })();
-
-let mainNav = uiComponents.createUIComponent('nav');
-let loginBox = uiComponents.createUIComponent('login');
-let bannerComponent = uiComponents.createUIComponent('banner');

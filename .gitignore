@@ -1,9 +1,34 @@
-.DS_Store
 # User-specific files
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+
+.buildpath
+.DS_Store
+.env
+.metadata
+.project
+.sass-cache
+.tmp
+app/scripts/config.js
+app/scripts/env-config.js
+app/scripts/version.json
+bower_components/
+dist/
+docs/
+dump.rdb
+e2etestresults/
+embeds.txt
+env-config-local.js
+node_modules/
+npm-debug.log
+test-results.xml
+test/e2e/e2etestresults/
+TESTS-PhantomJS_1.9.8_(Mac_OS_X_0.0.0).xml
+.idea/
+bug-report.txt
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
