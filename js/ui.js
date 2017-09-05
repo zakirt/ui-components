@@ -128,10 +128,29 @@ const uiComponents = (() => {
     const bannerComponent = {
         init: function(elem) {
             this.initComponent(elem);
-            this.headline = this.elem.querySelector('h1');
+            this.headlineElem = this.elem.querySelector('h1');
+            this.contentElem = this.elem.querySelector('#content');
+            this.btnElem = this.elem.querySelector('#learn-more');
+
+            this.btnElem.addEventListener('click', e => {
+                e.preventDefault();
+                this.loadContent();
+            });
         },
         listen: function(data) {
-            this.headline.textContent = data.username ? 'Hello ' + data.username : 'Hello world!';         
+            this.headlineElem.textContent = data.username ? 'Hello ' + data.username : 'Hello world!';         
+        },
+        loadContent: function() {
+            let result = fetch('../post.json').then(res => {
+                if (res.ok) {
+                    return res.json();                   
+                }
+            });
+
+            result.then(data => {
+                this.headlineElem.textContent = data.headline;
+                this.contentElem.textContent = data.content;
+            });
         }
     };
 
