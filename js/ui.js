@@ -74,7 +74,7 @@ const uiComponents = (() => {
             if (username) {
                 this.componentNotifier.broadcast(this.componentId, {
                     username: 'Zakir',
-                    loggedIn: true
+                    logged: true
                 });
 
                 this.welcomeElem.classList.remove('d-none');
@@ -138,7 +138,7 @@ const uiComponents = (() => {
             });
         },
         listen: function(data) {
-            this.headlineElem.textContent = data.username ? 'Hello ' + data.username : 'Hello world!';         
+            this.headlineElem.textContent = data.username ? 'Hello ' + username : 'Hello world!';         
         },
         loadContent: function() {
             let result = fetch('../post.json').then(res => {
