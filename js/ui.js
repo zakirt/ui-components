@@ -2,7 +2,9 @@
  * Provides a factory method for creating UI components.
  * @namespace 
  */
-const uiComponents = (() => {
+const uiComponents = ((undefined) => {
+    'use strict';
+
     /**
      * Subscriber to notify all UI components.
      * We'll use mediator pattern to keep all components updated.
@@ -73,7 +75,7 @@ const uiComponents = (() => {
 
             if (username) {
                 this.componentNotifier.broadcast(this.componentId, {
-                    username: 'Zakir',
+                    username: username,
                     loggedIn: true
                 });
 
@@ -92,7 +94,7 @@ const uiComponents = (() => {
                 this.logout();
             }
         }
-    }
+    };
 
     /**
      * Component for creating navigation menus.
