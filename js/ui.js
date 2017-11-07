@@ -2,7 +2,7 @@
  * Provides a factory method for creating UI components.
  * @namespace 
  */
-const uiComponents = ((undefined) => {
+const uiComponents = ((Rollbar, undefined) => {
     'use strict';
 
     /**
@@ -47,10 +47,18 @@ const uiComponents = ((undefined) => {
             this.initComponent(elem);
         },
         initComponent: function (elem) {
-            this.elem = elem;
-            this.componentId = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-            this.componentNotifier = uiSubscriber;
-            this.componentNotifier.subscribe(this);
+            try {
+                if (!elem) {
+                    throw 'Component element cannot be null.';
+                }
+
+                this.elem = elem;
+                this.componentId = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+                this.componentNotifier = uiSubscriber;
+                this.componentNotifier.subscribe(this);
+            } catch(e) {
+                Rollbar.error('Error uiComponents.initComponent: ', e.message);
+            }
         },
         listen: function (data) {
             console.log('Notification fired: ', data);
@@ -189,4 +197,4 @@ const uiComponents = ((undefined) => {
     return {
         createUIComponent: createUIComponent
     };
-})();
+})(Rollbar);
