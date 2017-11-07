@@ -47,7 +47,7 @@ const uiComponents = ((Rollbar, undefined) => {
             this.initComponent(elem);
         },
         initComponent: function (elem) {
-            // Roolbar
+            // Rollbar
             try {
                 if (!elem) {
                     throw 'Component element cannot be null.';
